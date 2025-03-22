@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ollie's Study Tracker</title>
   <script defer src="script.js"></script>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -21,21 +24,27 @@
   <template id="subject-template">
     <section class="subject">
       <details>
-        <summary class="subject-title"></summary>
+        <summary class="subject-title">
+            <span class="toggle-icon">▸</span>
+            <div class="subject-heading">
+              <span class="subject-name">Maths</span>
+            </div>
+            <div class="subject-inline-progress">
+              <progress value="0" max="100" class="progress-bar"></progress>
+            </div>
+          </summary>
+                 
         <div class="task-list"></div>
         <button class="add-task">Add Task</button>
-        <div class="subject-progress">
-          <label>Completion</label>
-          <progress value="0" max="100" class="progress-bar"></progress>
-        </div>
       </details>
     </section>
   </template>
+  
 
   <template id="task-template">
     <div class="task">
       <input type="checkbox" class="task-complete" />
-      <input type="text" class="task-note" placeholder="Note" />
+      <input type="text" class="task-note" placeholder="Task..." />
       <input type="date" class="task-date" />
     </div>
   </template>
