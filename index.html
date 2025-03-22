@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ollie's Study Tracker</title>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 id="greeting">Good day, Ollie</h1>
+    <div id="total-progress">
+      <label>Overall Progress</label>
+      <progress id="overallProgress" value="0" max="100"></progress>
+    </div>
+  </header>
+
+  <main id="subjects-container"></main>
+
+  <template id="subject-template">
+    <section class="subject">
+      <details>
+        <summary class="subject-title"></summary>
+        <div class="task-list"></div>
+        <button class="add-task">Add Task</button>
+        <div class="subject-progress">
+          <label>Completion</label>
+          <progress value="0" max="100" class="progress-bar"></progress>
+        </div>
+      </details>
+    </section>
+  </template>
+
+  <template id="task-template">
+    <div class="task">
+      <input type="checkbox" class="task-complete" />
+      <input type="text" class="task-note" placeholder="Note" />
+      <input type="date" class="task-date" />
+    </div>
+  </template>
+</body>
+</html>
