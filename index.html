@@ -9,15 +9,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
 </head>
 <body>
   <header>
     <h1 id="greeting">Good day, Ollie</h1>
     <div id="total-progress">
-      <label>Overall Progress</label>
-      <progress id="overallProgress" value="0" max="100"></progress>
+      <div class="overall-label">
+        <span>Overall Progress:</span>
+        <span id="overall-percentage">0%</span>
+      </div>
+      <progress id="overallProgress" max="100" value="0"></progress>
     </div>
+    
   </header>
+
+  <nav class="sidebar">
+    <a href="index.html" class="nav-item active" title="Home">
+      <i class="fas fa-home"></i>
+    </a>
+    <a href="schedule.html" class="nav-item" title="Schedule">
+      <i class="fas fa-calendar-alt"></i>
+    </a>
+    <a href="tracker.html" class="nav-item" title="Time Tracker">
+      <i class="fas fa-clock"></i>
+    </a>
+  </nav>  
+  
 
   <main id="subjects-container"></main>
 
@@ -30,6 +51,7 @@
               <span class="subject-name">Maths</span>
             </div>
             <div class="subject-inline-progress">
+              <span class="subject-inline-percentage">0%</span>
               <progress value="0" max="100" class="progress-bar"></progress>
             </div>
           </summary>

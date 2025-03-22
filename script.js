@@ -124,20 +124,40 @@ const subjects = [
   function updateProgress() {
     let totalTasks = 0;
     let totalCompleted = 0;
+  
     subjects.forEach((subject) => {
       const progress = getSubjectProgress(subject);
+  
+      // Update the subject's progress bar
       const bar = document.querySelector(`[data-subject='${subject}'] .progress-bar`);
       if (bar) bar.value = progress;
+  
+      // Update the "0% Complete" text under subject title
       const percentageSpan = document.querySelector(
         `[data-subject='${subject}'] .subject-percentage`
       );
       if (percentageSpan) percentageSpan.textContent = `${progress}% Complete`;
+  
+      // ✅ Update the number beside the inline progress bar
+      const percentLabel = document.querySelector(
+        `[data-subject='${subject}'] .subject-inline-percentage`
+      );
+      if (percentLabel) percentLabel.textContent = `${progress}%`;
+  
+      // Update total progress tracking
       const tasks = revisionData[subject];
       totalTasks += tasks.length;
       totalCompleted += tasks.filter((t) => t.complete).length;
     });
-    overallProgress.value = totalTasks ? Math.round((totalCompleted / totalTasks) * 100) : 0;
+  
+    // ✅ Update the overall progress bar and its label
+    const overall = totalTasks ? Math.round((totalCompleted / totalTasks) * 100) : 0;
+    overallProgress.value = overall;
+  
+    const overallLabel = document.getElementById("overall-percentage");
+    if (overallLabel) overallLabel.textContent = `${overall}%`;
   }
+  
   
   function saveData() {
     localStorage.setItem("revisionData", JSON.stringify(revisionData));
