@@ -96,10 +96,24 @@ progress::-webkit-progress-value {
 
 .task input[type="date"] {
   width: 9rem;
-  padding: 0.25rem;
+  padding: 0.4rem;
   border: 1px solid #d1d5db;
   border-radius: 0.375rem;
 }
+
+.task input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: #1e3a8a; /* theme blue */
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.task input[type="checkbox"]:hover {
+  box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.2);
+}
+
 
 .add-task {
   background-color: #1e3a8a; /* blue */

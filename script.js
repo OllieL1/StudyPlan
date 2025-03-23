@@ -151,7 +151,7 @@ const subjects = [
     });
   
     // ✅ Update the overall progress bar and its label
-    const overall = totalTasks ? Math.round((totalCompleted / totalTasks) * 100) : 0;
+    const overall = totalTasks ? ((totalCompleted / totalTasks) * 100).toFixed(1) : "0.0";
     overallProgress.value = overall;
   
     const overallLabel = document.getElementById("overall-percentage");
