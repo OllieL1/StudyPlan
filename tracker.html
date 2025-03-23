@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Schedule</title>
+  <title>Time Tracker</title>
   <link rel="stylesheet" href="styles.css" />
   <link
     rel="stylesheet"
@@ -19,24 +19,26 @@
     <a href="index.html" class="nav-item" title="Home">
       <i class="fas fa-home"></i>
     </a>
-    <a href="schedule.html" class="nav-item active" title="Schedule">
+    <a href="schedule.html" class="nav-item" title="Schedule">
       <i class="fas fa-calendar-alt"></i>
     </a>
-    <a href="tracker.html" class="nav-item" title="Time Tracker">
+    <a href="tracker.html" class="nav-item active" title="Time Tracker">
       <i class="fas fa-clock"></i>
     </a>
     <div class="study-toggle" id="study-toggle">
-        <i class="fas fa-power-off"></i>
+      <i class="fas fa-power-off"></i>
     </div>
   </nav>
 
   <main>
     <header>
-      <h1>Schedule</h1>
+      <h1>Time Tracker</h1>
+      <p id="total-time">Total Time Studied: 0 mins</p>
     </header>
-    <div id="schedule-container"></div>
+    <div id="session-list"></div>
   </main>
 
+  <!-- Modal from before -->
   <div id="study-modal" class="modal hidden">
     <div class="modal-content">
       <h2>Log Study Session</h2>
@@ -58,9 +60,9 @@
         <button id="confirm-session">Log Session</button>
       </div>
     </div>
-  </div>  
+  </div>
 
   <script src="tracker-toggle.js"></script>
-  <script src="schedule.js"></script>
+  <script src="tracker.js"></script>
 </body>
 </html>

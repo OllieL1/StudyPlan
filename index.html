@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="icon.png" type="image/png">
   <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
@@ -37,7 +38,12 @@
     <a href="tracker.html" class="nav-item" title="Time Tracker">
       <i class="fas fa-clock"></i>
     </a>
-  </nav>  
+  
+    <div class="study-toggle" id="study-toggle">
+      <i class="fas fa-power-off"></i>
+    </div>
+  </nav>
+  
   
 
   <main id="subjects-container"></main>
@@ -70,5 +76,30 @@
       <input type="date" class="task-date" />
     </div>
   </template>
+
+  <div id="study-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Log Study Session</h2>
+      <label>
+        Where did you study?
+        <select id="study-location">
+          <option>Library</option>
+          <option>Home</option>
+          <option>Coffee Shop</option>
+          <option>Lab</option>
+        </select>
+      </label>
+      <label>
+        What did you study?
+        <input type="text" id="study-topic" placeholder="e.g. Algorithms, Notes Review" />
+      </label>
+      <div class="modal-actions">
+        <button id="cancel-session">Cancel</button>
+        <button id="confirm-session">Log Session</button>
+      </div>
+    </div>
+  </div>  
+
+  <script src="tracker-toggle.js"></script>
 </body>
 </html>
