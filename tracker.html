@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Time Tracker</title>
+  <script>
+  const hr = new Date().getHours();
+  const isEvening = hr >= 16 || hr < 6; // evening = 6pm to 6am
+
+  if (isEvening) {
+    document.body.classList.add("dark-mode");
+  }
+  </script>
   <link rel="stylesheet" href="styles.css" />
   <link
     rel="stylesheet"
@@ -35,13 +43,20 @@
       <h1>Time Tracker</h1>
       <p id="total-time">Total Time Studied: 0 mins</p>
     </header>
+    <div id="daily-toggle-container">
+      <button id="toggle-daily-view">Toggle Daily View</button>
+    </div>    
+    <div id="daily-view" class="hidden"></div>
     <div id="session-list"></div>
+    <div id="pagination" class="pagination"></div>
   </main>
 
   <!-- Modal from before -->
   <div id="study-modal" class="modal hidden">
     <div class="modal-content">
       <h2>Log Study Session</h2>
+  
+      <!-- Where was the session? -->
       <label>
         Where did you study?
         <select id="study-location">
@@ -51,18 +66,38 @@
           <option>Lab</option>
         </select>
       </label>
+  
+      <!-- What was studied -->
       <label>
         What did you study?
         <input type="text" id="study-topic" placeholder="e.g. Algorithms, Notes Review" />
       </label>
+  
+      <!-- Subject selection -->
+      <div class="subject-select">
+        <p><strong>Which subject(s)?</strong></p>
+        <div id="subject-options" class="subject-options"></div>
+      </div>
+  
+      <!-- Optional per-subject time -->
+      <div id="multi-time-inputs" class="hidden">
+        <p style="margin-top: 1rem;"><strong>Enter time for each selected subject:</strong></p>
+      </div>
+  
+      <!-- Total duration display -->
+      <p id="session-duration" class="session-length-display"></p>
+  
+      <!-- Actions -->
       <div class="modal-actions">
         <button id="cancel-session">Cancel</button>
         <button id="confirm-session">Log Session</button>
       </div>
     </div>
   </div>
+  
 
   <script src="tracker-toggle.js"></script>
   <script src="tracker.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

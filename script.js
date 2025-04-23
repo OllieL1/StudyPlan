@@ -23,8 +23,9 @@ const subjects = [
   const greeting = document.getElementById("greeting");
   const hour = new Date().getHours();
   const timeOfDay =
-    hour > 4 && hour < 12 ? "Good morning" : hour > 12 && hour < 18 ? "Good afternoon" : "Good evening";
+    hour > 4 && hour < 12 ? "Good morning" : hour >= 12 && hour <= 18 ? "Good afternoon" : "Good evening";
   greeting.textContent = `${timeOfDay}, Ollie`;
+
   
   // Initialise the tracker
   function init() {

@@ -40,6 +40,8 @@
   <div id="study-modal" class="modal hidden">
     <div class="modal-content">
       <h2>Log Study Session</h2>
+  
+      <!-- Where was the session? -->
       <label>
         Where did you study?
         <select id="study-location">
@@ -49,18 +51,38 @@
           <option>Lab</option>
         </select>
       </label>
+  
+      <!-- What was studied -->
       <label>
         What did you study?
         <input type="text" id="study-topic" placeholder="e.g. Algorithms, Notes Review" />
       </label>
+  
+      <!-- Subject selection -->
+      <div class="subject-select">
+        <p><strong>Which subject(s)?</strong></p>
+        <div id="subject-options" class="subject-options"></div>
+      </div>
+  
+      <!-- Optional per-subject time -->
+      <div id="multi-time-inputs" class="hidden">
+        <p style="margin-top: 1rem;"><strong>Enter time for each selected subject:</strong></p>
+      </div>
+  
+      <!-- Total duration display -->
+      <p id="session-duration" class="session-length-display"></p>
+  
+      <!-- Actions -->
       <div class="modal-actions">
         <button id="cancel-session">Cancel</button>
         <button id="confirm-session">Log Session</button>
       </div>
     </div>
-  </div>  
+  </div>
+  
 
   <script src="tracker-toggle.js"></script>
   <script src="schedule.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
