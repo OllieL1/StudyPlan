@@ -1,103 +1,131 @@
-import Image from "next/image";
+import Head from "next/head";
+import Script from "next/script";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt, faClock, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+// import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    return (
+        <>
+        <Head>
+            <title>Ollie's Study Tracker</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            {/* <link rel="stylesheet" href="." /> */}
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+            <link rel="icon" href="icon.png" type="image/png"/>
+            <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        </Head>
+
+        <header>
+            <h1 id="greeting">Good day, Ollie</h1>
+            <div id="total-progress">
+            <div className="overall-label">
+                <a href="progress.html" id="total-progress">
+                <span>Overall Progress:</span>
+                <span id="overall-percentage">0%</span></a>
+            </div>
+            <progress id="overallProgress" max="100" value="0"></progress>
+            </div>
+        </header>
+
+        <nav className="sidebar">
+            <a href="index.html" className="nav-item active" title="Home">
+              <FontAwesomeIcon icon={faHome} />
+            </a>
+            <a href="schedule.html" className="nav-item" title="Schedule">
+              <FontAwesomeIcon icon={faCalendarAlt}/>
+            </a>
+            <a href="tracker.html" className="nav-item" title="Time Tracker">
+              <FontAwesomeIcon icon={faClock}/>
+            </a>
+        
+            <div className="study-toggle" id="study-toggle">
+              <FontAwesomeIcon icon={faPowerOff}/>
+            </div>
+        </nav>
+
+        <main id="subjects-container"></main>
+
+        <template id="subject-template">
+            <section className="subject">
+            <details>
+                <summary className="subject-title">
+                    <span className="toggle-icon">▸</span>
+                    <div className="subject-heading">
+                    <span className="subject-name">Maths</span>
+                    </div>
+                    <div className="subject-inline-progress">
+                    <span className="subject-inline-percentage">0%</span>
+                    <progress value="0" max="100" className="progress-bar"></progress>
+                    </div>
+                </summary>
+                        
+                <div className="task-list"></div>
+                <button className="add-task">Add Task</button>
+            </details>
+            </section>
+        </template>
+
+        <template id="task-template">
+            <div className="task">
+            <input type="checkbox" className="task-complete" />
+            <input type="text" className="task-note" placeholder="Task..." />
+            <input type="date" className="task-date" />
+            </div>
+        </template>
+
+        <div id="study-modal" className="modal hidden">
+            <div className="modal-content">
+            <h2>Log Study Session</h2>
+        
+            {/* Where was the session? */}
+            <label>
+                Where did you study?
+                <select id="study-location">
+                <option>Library</option>
+                <option>Home</option>
+                <option>Coffee Shop</option>
+                <option>Lab</option>
+                </select>
+            </label>
+        
+            {/* What was studied */}
+            <label>
+                What did you study?
+                <input type="text" id="study-topic" placeholder="e.g. Algorithms, Notes Review" />
+            </label>
+        
+            {/* Subject selection */}
+            <div className="subject-select">
+                <p><strong>Which subject(s)?</strong></p>
+                <div id="subject-options" className="subject-options"></div>
+            </div>
+        
+            {/* Optional per-subject time */}
+            <div id="multi-time-inputs" className="hidden">
+                <p><strong>Enter time for each selected subject:</strong></p>
+            </div>
+        
+            {/* Total duration display */}
+            <p id="session-duration" className="session-length-display"></p>
+        
+            {/* Actions */}
+            <div className="modal-actions">
+                <button id="cancel-session">Cancel</button>
+                <button id="confirm-session">Log Session</button>
+            </div>
+            </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        <Script src="scripts/script.js" strategy="afterInteractive" />
+        <Script src="scripts/tracker-toggle.js" strategy="afterInteractive" />
+        <Script src="scripts/main.js" strategy="afterInteractive" />
+
+        </>
+    );
 }
+
