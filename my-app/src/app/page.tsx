@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Script from "next/script";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faClock, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import Link from "next/link";
-// import Image from "next/image";
+
+import Sidebar from "./components/sidebar"
 
 export default function Home() {
     return (
@@ -25,29 +24,16 @@ export default function Home() {
             <h1 id="greeting">Good day, Ollie</h1>
             <div id="total-progress">
             <div className="overall-label">
-                <a href="progress.html" id="total-progress">
-                <span>Overall Progress:</span>
-                <span id="overall-percentage">0%</span></a>
+                <Link href="/progress" id="total-progress">
+                  <span>Overall Progress:</span>
+                  <span id="overall-percentage">0%</span>
+                </Link>
             </div>
             <progress id="overallProgress" max="100" value="0"></progress>
             </div>
         </header>
 
-        <nav className="sidebar">
-            <a href="index.html" className="nav-item active" title="Home">
-              <FontAwesomeIcon icon={faHome} />
-            </a>
-            <a href="schedule.html" className="nav-item" title="Schedule">
-              <FontAwesomeIcon icon={faCalendarAlt}/>
-            </a>
-            <Link href="/tracker" className="nav-item" title="Time Tracker">
-              <FontAwesomeIcon icon={faClock}/>
-            </Link>
-        
-            <div className="study-toggle" id="study-toggle">
-              <FontAwesomeIcon icon={faPowerOff}/>
-            </div>
-        </nav>
+      <Sidebar />
 
         <main id="subjects-container"></main>
 
