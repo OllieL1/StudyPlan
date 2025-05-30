@@ -1,6 +1,8 @@
-# StudyPlan
+# Atom Tasks 
 
 A simple website for building and tracking your study plan.
+
+For atomising your tasks.
 
 ## Setup Guide
 - Clone the repo into your local directory.
