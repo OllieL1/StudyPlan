@@ -1,0 +1,13 @@
+.study-toggle {
+  /* your existing styles */
+  transition: all 0.3s ease;
+}
+
+.study-toggle.tracking {
+  background-color: #22c55e; /* green when tracking */
+  color: white;
+}
+
+.study-toggle.tracking:hover {
+  background-color: #16a34a; /* darker green on hover */
+}
