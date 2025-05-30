@@ -7,7 +7,7 @@ import TrackerModal, { StudySession } from '../components/TrackerModal';
 import CommonHead from '../components/CommonHead';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons';
-import Sidebar from "../components/sidebar"
+import Sidebar from "../components/Sidebar"
 
 
 const TimeTracker: React.FC = () => {
