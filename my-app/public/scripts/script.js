@@ -12,8 +12,12 @@ const subjects = [
   
   // DOM references
   const subjectsContainer = document.getElementById("subjects-container");
-  const subjectTemplate = document.getElementById("subject-template");
-  const taskTemplate = document.getElementById("task-template");
+
+  // This instead reads the tag and gets the first child (the <section className="subject">)
+  const subjectTemplate = document.getElementById("subject-template").firstElementChild;
+
+  const taskTemplate = document.getElementById("task-template").firstElementChild;
+
   const overallProgress = document.getElementById("overallProgress");
   
   // Load from localStorage or start fresh
@@ -31,8 +35,8 @@ const subjects = [
   function init() {
     subjects.forEach((subject) => {
       if (!revisionData[subject]) revisionData[subject] = [];
-      const subjectClone = subjectTemplate.content.cloneNode(true);
-      const section = subjectClone.querySelector(".subject");
+      const subjectClone = subjectTemplate.cloneNode(true);
+      const section = subjectClone;
       const title = subjectClone.querySelector(".subject-title");
       const taskList = subjectClone.querySelector(".task-list");
       const addTaskBtn = subjectClone.querySelector(".add-task");
@@ -62,8 +66,8 @@ const subjects = [
   
   // Create a task element
   function createTask(subject, taskData = { note: "", date: "", complete: false }) {
-    const task = taskTemplate.content.cloneNode(true);
-    const taskDiv = task.querySelector(".task");
+    const task = taskTemplate.cloneNode(true);
+    const taskDiv = task;
     const checkbox = task.querySelector(".task-complete");
     const note = task.querySelector(".task-note");
     const date = task.querySelector(".task-date");

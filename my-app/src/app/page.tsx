@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import Sidebar from "./components/Sidebar";
 import CommonHead from "./components/CommonHead";
+import SubjectTemplate from "./components/SubjectTemplate";
+import TaskTemplate from "./components/TaskTemplate";
 
 export default function Home() {
     return (
@@ -27,33 +29,13 @@ export default function Home() {
 
         <main id="subjects-container"></main>
 
-        <template id="subject-template">
-            <section className="subject">
-            <details>
-                <summary className="subject-title">
-                    <span className="toggle-icon">▸</span>
-                    <div className="subject-heading">
-                    <span className="subject-name">Maths</span>
-                    </div>
-                    <div className="subject-inline-progress">
-                    <span className="subject-inline-percentage">0%</span>
-                    <progress value="0" max="100" className="progress-bar"></progress>
-                    </div>
-                </summary>
-                        
-                <div className="task-list"></div>
-                <button className="add-task">Add Task</button>
-            </details>
-            </section>
-        </template>
+        <div id="subject-template" style={{display:"none"}}>
+            <SubjectTemplate />
+        </div>
 
-        <template id="task-template">
-            <div className="task">
-            <input type="checkbox" className="task-complete" />
-            <input type="text" className="task-note" placeholder="Task..." />
-            <input type="date" className="task-date" />
-            </div>
-        </template>
+        <div id="task-template" style={{display:"none"}}>
+            <TaskTemplate />
+        </div>
 
         <div id="study-modal" className="modal hidden">
             <div className="modal-content">
