@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Script from "next/script";
+import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 // import Image from "next/image";
@@ -24,9 +25,10 @@ export default function Home() {
             <h1 id="greeting">Good day, Ollie</h1>
             <div id="total-progress">
             <div className="overall-label">
-                <a href="progress.html" id="total-progress">
-                <span>Overall Progress:</span>
-                <span id="overall-percentage">0%</span></a>
+                <Link href="/progress" id="total-progress">
+                  <span>Overall Progress:</span>
+                  <span id="overall-percentage">0%</span>
+                </Link>
             </div>
             <progress id="overallProgress" max="100" value="0"></progress>
             </div>
@@ -36,9 +38,9 @@ export default function Home() {
             <a href="index.html" className="nav-item active" title="Home">
               <FontAwesomeIcon icon={faHome} />
             </a>
-            <a href="schedule.html" className="nav-item" title="Schedule">
+            <Link href="/schedule" className="nav-item" title="Schedule">
               <FontAwesomeIcon icon={faCalendarAlt}/>
-            </a>
+            </Link>
             <a href="tracker.html" className="nav-item" title="Time Tracker">
               <FontAwesomeIcon icon={faClock}/>
             </a>
