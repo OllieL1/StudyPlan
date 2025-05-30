@@ -12,14 +12,16 @@ export interface StudySession {
 interface StudySessionModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmit: (session: Omit<StudySession, 'id' | 'timestamp'>) => void;
+  onSubmit: (session: Omit<StudySession, 'id' | 'timestamp' | 'duration'>) => void;
   subjects?: string[];
+  sessionDuration?: number; // Pre-calculated duration from timer
 }
 
 const TrackerModal: React.FC<StudySessionModalProps> = ({
   isOpen,
   onClose,
   onSubmit,
+  sessionDuration = 0,
   subjects = [
     'Mathematics',
     'Computer Science',
@@ -33,7 +35,6 @@ const TrackerModal: React.FC<StudySessionModalProps> = ({
   const [studyLocation, setStudyLocation] = useState('Library');
   const [studyTopic, setStudyTopic] = useState('');
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
-  const [sessionDuration, setSessionDuration] = useState(0);
 
   // Reset form when modal opens/closes
   useEffect(() => {
@@ -46,7 +47,6 @@ const TrackerModal: React.FC<StudySessionModalProps> = ({
     setStudyLocation('Library');
     setStudyTopic('');
     setSelectedSubjects([]);
-    setSessionDuration(0);
   };
 
   const handleSubjectToggle = (subject: string) => {
@@ -60,7 +60,6 @@ const TrackerModal: React.FC<StudySessionModalProps> = ({
   const handleSubmit = () => {
     if (studyTopic.trim() && selectedSubjects.length > 0 && sessionDuration > 0) {
       onSubmit({
-        duration: sessionDuration,
         location: studyLocation,
         topic: studyTopic.trim(),
         subjects: selectedSubjects
@@ -122,20 +121,8 @@ const TrackerModal: React.FC<StudySessionModalProps> = ({
           </div>
         </div>
 
-        <label>
-          Session Duration (minutes):
-          <input
-            type="number"
-            value={sessionDuration}
-            onChange={(e) => setSessionDuration(Number(e.target.value))}
-            min="1"
-            max="720" // 12 hours max
-            required
-          />
-        </label>
-
         <p className="session-length-display">
-          Duration: {sessionDuration} minutes
+          <strong>Session Duration: {sessionDuration} minutes</strong>
         </p>
 
         <div className="modal-actions">

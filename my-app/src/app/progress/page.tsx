@@ -2,7 +2,7 @@ import Head from "next/head";
 import Script from "next/script";
 import Link from "next/link";
 
-import Sidebar from "../components/sidebar"
+import Sidebar from "../components/Sidebar"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons';
