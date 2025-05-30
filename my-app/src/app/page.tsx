@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Script from "next/script";
 import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faClock, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons';
-// import Image from "next/image";
+
+import Sidebar from "./components/sidebar"
 
 export default function Home() {
     return (
@@ -34,21 +33,7 @@ export default function Home() {
             </div>
         </header>
 
-        <nav className="sidebar">
-            <a href="index.html" className="nav-item active" title="Home">
-              <FontAwesomeIcon icon={faHome} />
-            </a>
-            <Link href="/schedule" className="nav-item" title="Schedule">
-              <FontAwesomeIcon icon={faCalendarAlt}/>
-            </Link>
-            <a href="tracker.html" className="nav-item" title="Time Tracker">
-              <FontAwesomeIcon icon={faClock}/>
-            </a>
-        
-            <div className="study-toggle" id="study-toggle">
-              <FontAwesomeIcon icon={faPowerOff}/>
-            </div>
-        </nav>
+      <Sidebar />
 
         <main id="subjects-container"></main>
 
