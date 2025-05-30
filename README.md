@@ -1,4 +1,4 @@
-# Atom Tasks 
+# ⚛️ Atom Tasks 
 
 A simple website for building and tracking your study plan.
 
