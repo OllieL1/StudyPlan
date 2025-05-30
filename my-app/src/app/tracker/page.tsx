@@ -7,6 +7,8 @@ import TrackerModal, { StudySession } from '../components/TrackerModal';
 import CommonHead from '../components/CommonHead';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import Sidebar from "../components/sidebar"
+
 
 const TimeTracker: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -70,21 +72,7 @@ const TimeTracker: React.FC = () => {
     <>
       <CommonHead title="Time Tracker" />
 
-      <nav className="sidebar">
-            <a href="index.html" className="nav-item active" title="Home">
-              <FontAwesomeIcon icon={faHome} />
-            </a>
-            <a href="schedule.html" className="nav-item" title="Schedule">
-              <FontAwesomeIcon icon={faCalendarAlt}/>
-            </a>
-            <Link href="/tracker" className="nav-item" title="Time Tracker">
-              <FontAwesomeIcon icon={faClock}/>
-            </Link>
-        
-            <div className="study-toggle" id="study-toggle">
-              <FontAwesomeIcon icon={faPowerOff}/>
-            </div>
-        </nav>
+      <Sidebar />
 
       <main>
         <header>
