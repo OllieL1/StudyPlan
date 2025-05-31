@@ -14,6 +14,22 @@ const DailyView: React.FC<DailyViewProps> = ({ className = '' }) => {
     return hrs > 0 ? `${hrs}h ${mins}m` : `${mins}m`;
   };
 
+  const formatTimeRange = (startTimestamp: Date, duration: number): string => {
+    const startTime = new Date(startTimestamp);
+    const endTime = new Date(startTime.getTime() + duration * 60 * 1000);
+    
+    const startStr = startTime.toLocaleTimeString('en-UK', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    const endStr = endTime.toLocaleTimeString('en-UK', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    
+    return `${startStr} - ${endStr}`;
+  };
+
   // Group sessions by date
   const groupedSessions = sessions.reduce((grouped, session) => {
     const dateKey = new Date(session.timestamp).toLocaleDateString('en-CA'); // YYYY-MM-DD format
@@ -93,10 +109,7 @@ const DailyView: React.FC<DailyViewProps> = ({ className = '' }) => {
                         <span className="session-topic">{session.topic}</span>
                         <span className="session-duration">{formatTime(session.duration)}</span>
                         <span className="session-time">
-                          {new Date(session.timestamp).toLocaleTimeString('en-UK', {
-                            hour: '2-digit',
-                            minute: '2-digit'
-                          })}
+                          {formatTimeRange(session.timestamp, session.duration)}
                         </span>
                       </div>
                     ))}

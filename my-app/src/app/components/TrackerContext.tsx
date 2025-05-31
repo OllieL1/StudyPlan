@@ -72,7 +72,6 @@ export const TrackerProvider: React.FC<TrackerProviderProps> = ({ children }) =>
       const endTime = new Date();
       const duration = Math.round((endTime.getTime() - startTime.getTime()) / (1000 * 60)); // duration in minutes
       setCurrentDuration(duration);
-      // Don't change isTracking here - let the modal handle it
       setIsModalOpen(true); // Open modal to fill in details
     }
   };

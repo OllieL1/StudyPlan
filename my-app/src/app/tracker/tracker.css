@@ -11,3 +11,65 @@
 .study-toggle.tracking:hover {
   background-color: #16a34a; /* darker green on hover */
 }
+
+.mini-session {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  margin: 4px 0;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border-left: 3px solid #1e3a8a;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.mini-session:hover {
+  background-color: #e9ecef;
+}
+
+.session-topic {
+  flex: 1;
+  font-weight: 500;
+  color: #495057;
+  margin-right: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-duration {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: #7f1d1d;
+  background-color: #fccfcf;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  margin-right: 8px;
+}
+
+.session-time {
+  flex-shrink: 0;
+  color: #6c757d;
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
+  min-width: 50px;
+  text-align: right;
+}
+
+.session-list-mini {
+  margin-top: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Optional: Add alternating row colors */
+.mini-session:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.mini-session:nth-child(even):hover {
+  background-color: #f8f9fa;
+}
